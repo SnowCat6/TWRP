@@ -395,13 +395,13 @@ else
     LOCAL_LDFLAGS += -Wl,-dynamic-linker,/sbin/linker64
 endif
 ifneq ($(TW_USE_TOOLBOX), true)
-    LOCAL_ADDITIONAL_DEPENDENCIES += toybox_static
 #    ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 24; echo $$?),0)
 #        LOCAL_POST_INSTALL_CMD := \
 #            $(hide) mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/sbin && \
 #            ln -sf /sbin/busybox $(TARGET_RECOVERY_ROOT_OUT)/sbin/sh
 #    endif
 else
+    LOCAL_ADDITIONAL_DEPENDENCIES += toybox_static unzip
     ifneq ($(wildcard external/toybox/Android.mk),)
         LOCAL_ADDITIONAL_DEPENDENCIES += toybox_static
     endif
